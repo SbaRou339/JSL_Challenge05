@@ -68,6 +68,8 @@ const data = {
 // Only edit below this comment
 
 const createHtml = (athlete) => {
+
+  //Sandile's Section
   firstName, surname, id, races = athlete
   [date], [time] = races.reverse()
 
@@ -79,6 +81,8 @@ const createHtml = (athlete) => {
 
   const list = document.createElement(dl);
 
+
+  //Sbabalwe's Section
   const day = date.getDate();
   const month = MONTHS[date.month];
   const year = date.year;
@@ -105,6 +109,8 @@ const createHtml = (athlete) => {
 
   fragment.appendChild(list);
 }
+
+//Qonda's Section
 
 [NM372], [SV782] = data
 document.querySelector(NM372).appendChild(createHtml(NM372));
