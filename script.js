@@ -68,24 +68,21 @@ const data = {
 // Only edit below this comment
 
 const createHtml = (athlete) => {
-
   //Sandile's Section
-  firstName, surname, id, races = athlete
-  [date], [time] = races.reverse()
+  firstName, surname, id, (races = athlete[date]), ([time] = races.reverse());
 
   const fragment = document.createDocumentFragment();
 
   title = document.createElement(h2);
-  title= id;
+  title = id;
   fragment.appendChild(title);
 
   const list = document.createElement(dl);
 
-
   //Sbabalwe's Section
 
   //Creating Date object and passing date string to its constructor
-  const eventDate =new Date(date);
+  const eventDate = new Date(date);
 
   const day = eventDate.getDate();
   const month = MONTHS[eventDate.getMonth()];
@@ -111,7 +108,10 @@ const createHtml = (athlete) => {
     <dd>${day} ${month} ${year}</dd>
 
     <dt>Total Time (Latest)</dt>
-    <dd>${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}</dd>
+    <dd>${String(hours).padStart(2, "0")}:${String(minutes).padStart(
+    2,
+    "0"
+  )}</dd>
   `;
 
   fragment.appendChild(list);
