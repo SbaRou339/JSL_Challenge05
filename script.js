@@ -70,13 +70,13 @@ const data = {
 const createHtml = (athlete) => {
 
   //Sandile's Section
-  firstName, surname, id, races = athlete
-  [date], [time] = races.reverse()
+  const { firstName, surname, id, races } = athlete;
+  const [latestRace] = races.slice(-1); //to get latest race
 
   const fragment = document.createDocumentFragment();
 
-  title = document.createElement(h2);
-  title= id;
+  const title = document.createElement(h2);
+  title.textContent= id;
   fragment.appendChild(title);
 
   const list = document.createElement(dl);
