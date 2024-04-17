@@ -68,31 +68,25 @@ const data = {
 // Only edit below this comment
 
 const createHtml = (athlete) => {
-  //Sandile's Section
   const { firstName, surname, id, races } = athlete;
-  const [latestRace] = races.slice(-1); //to get latest race
-  
+  const [latestRace] = races.slice(-1); // Get the latest race
+
   const fragment = document.createDocumentFragment();
   const title = document.createElement('h2');
-  title.textContent= id;
+  title.textContent = id;
   fragment.appendChild(title);
 
   const list = document.createElement('dl');
 
-  //Sbabalwe's Section
-
-  //Creating Date object and passing date string to its constructor
-  const eventDate = new Date(date);
+  // Create Date object using the latest race's date
+  const eventDate = new Date(latestRace.date);
 
   const day = eventDate.getDate();
   const month = MONTHS[eventDate.getMonth()];
-  const year = eventDate.getFullYear;
+  const year = eventDate.getFullYear(); // Corrected to call getFullYear as a function
 
-  //first, second, third, fourth = timeAsArray;
-  //total = first + second + third + fourth;
-
-  //Calculating total time
-  const total = time.reduce((acc, curr) => acc + curr, 0);
+  // Calculate total time from the latest race's time array
+  const total = latestRace.time.reduce((acc, curr) => acc + curr, 0);
 
   const hours = Math.floor(total / 60);
   const minutes = total % 60;
@@ -102,24 +96,24 @@ const createHtml = (athlete) => {
     <dd>${firstName} ${surname}</dd>
 
     <dt>Total Races</dt>
-    <dd>${races}</dd>
+    <dd>${races.length}</dd>
 
     <dt>Event Date (Latest)</dt>
     <dd>${day} ${month} ${year}</dd>
 
     <dt>Total Time (Latest)</dt>
-    <dd>${String(hours).padStart(2, "0")}:${String(minutes).padStart(
-    2,
-    "0"
-  )}</dd>
+    <dd>${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}</dd>
   `;
 
   fragment.appendChild(list);
   return fragment;
 }
 
-//Qonda's Section
-
-[NM372], [SV782] = data
-document.querySelector(NM372).appendChild(createHtml(NM372));
-document.querySelector(SV782).appendChild(createHtml(SV782));
+// Loop through each athlete and apply changes to the DOM
+const athletes = data.response.data;
+Object.entries(athletes).forEach(([key, athlete]) => {
+  const element = document.querySelector(`[data-athlete="${key}"]`); // Changed to use data-athlete attribute
+  if (element) {
+    element.appendChild(createHtml(athlete));
+  }
+});
