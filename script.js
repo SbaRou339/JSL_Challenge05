@@ -1,19 +1,19 @@
 // scripts.js
 
 const MONTHS = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-]
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 const data = {
   response: {
@@ -28,11 +28,11 @@ const data = {
         id: "NM372",
         races: [
           {
-            date: '2022-11-18T20:00:00.000Z',
+            date: "2022-11-18T20:00:00.000Z",
             time: [9, 7, 8, 6],
           },
           {
-            date: '2022-12-02T20:00:00.000Z',
+            date: "2022-12-02T20:00:00.000Z",
             time: [6, 7, 8, 7],
           },
         ],
@@ -44,19 +44,19 @@ const data = {
         id: "SV782",
         races: [
           {
-            date: '2022-11-18T20:00:00.000Z',
+            date: "2022-11-18T20:00:00.000Z",
             time: [10, 8, 3, 12],
           },
           {
-            date: '2022-11-25T20:00:00.000Z',
+            date: "2022-11-25T20:00:00.000Z",
             time: [6, 8, 9, 11],
           },
           {
-            date: '2022-12-02T20:00:00.000Z',
+            date: "2022-12-02T20:00:00.000Z",
             time: [10, 11, 4, 8],
           },
           {
-            date: '2022-12-09T20:00:00.000Z',
+            date: "2022-12-09T20:00:00.000Z",
             time: [9, 8, 9, 11],
           },
         ],
@@ -71,13 +71,13 @@ const createHtml = (athlete) => {
   //Sandile's Section
   const { firstName, surname, id, races } = athlete;
   const [latestRace] = races.slice(-1); //to get latest race
-  
+
   const fragment = document.createDocumentFragment();
-  const title = document.createElement('h2');
-  title.textContent= id;
+  const title = document.createElement("h2");
+  title.textContent = id;
   fragment.appendChild(title);
 
-  const list = document.createElement('dl');
+  const list = document.createElement("dl");
 
   //Sbabalwe's Section
 
@@ -93,6 +93,11 @@ const createHtml = (athlete) => {
 
   //Calculating total time
   const total = time.reduce((acc, curr) => acc + curr, 0);
+
+  // let total = 0;
+  // for (let i = 0; i < time.length; i++) {
+  //   total += time[i];
+  // }
 
   const hours = Math.floor(total / 60);
   const minutes = total % 60;
@@ -116,10 +121,10 @@ const createHtml = (athlete) => {
 
   fragment.appendChild(list);
   return fragment;
-}
+};
 
 //Qonda's Section
 
-[NM372], [SV782] = data
+[NM372], ([SV782] = data);
 document.querySelector(NM372).appendChild(createHtml(NM372));
 document.querySelector(SV782).appendChild(createHtml(SV782));
