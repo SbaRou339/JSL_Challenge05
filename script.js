@@ -69,12 +69,13 @@ const data = {
 
 const createHtml = (athlete) => {
   //Sandile's Section
-  firstName, surname, id, (races = athlete[date]), ([time] = races.reverse());
+  firstName, surname, id, races = athlete
+  [date], [time] = races.reverse()
 
   const fragment = document.createDocumentFragment();
 
   title = document.createElement(h2);
-  title = id;
+  title= id;
   fragment.appendChild(title);
 
   const list = document.createElement(dl);
