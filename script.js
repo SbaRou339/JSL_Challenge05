@@ -69,7 +69,9 @@ const data = {
 
 const createHtml = (athlete) => {
   //Sandile's Section
-
+  const { firstName, surname, id, races } = athlete;
+  const [latestRace] = races.slice(-1); //to get latest race
+  
   const fragment = document.createDocumentFragment();
   const title = document.createElement('h2');
   title.textContent= id;
