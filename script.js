@@ -68,21 +68,34 @@ const data = {
 // Only edit below this comment
 
 const createHtml = (athlete) => {
-  //Sandile's Section
+
+  //Sandile's part
   const { firstName, surname, id, races } = athlete;
+
   const [latestRace] = races.slice(-1); //to get latest race
+
   const fragment = document.createDocumentFragment();
+  const title = document.createElement("h2");
+  title.textContent = id;
   fragment.appendChild(title);
 
   const list = document.createElement("dl");
 
-  //Sbabalwe's Section
-
-  //Creating Date object and passing date string to its constructor
-  const eventDate = new Date(date);
+  //Sbabalwe' part
+  // Create Date object using the latest race's date
+  const eventDate = new Date(latestRace.date);
 
   const day = eventDate.getDate();
   const month = MONTHS[eventDate.getMonth()];
+  const year = eventDate.getFullYear(); // Corrected to call getFullYear as a function
+
+  // Calculate total time from the latest race's time array
+  const total = latestRace.time.reduce((acc, curr) => acc + curr, 0);
+
+  // let total = 0;
+  // for (let i = 0; i < time.length; i++) {
+  //   total += time[i];
+  // }
 
   const hours = Math.floor(total / 60);
   const minutes = total % 60;
@@ -103,8 +116,10 @@ const createHtml = (athlete) => {
 
   fragment.appendChild(list);
   return fragment;
-}
+};
 
+
+//Qonda's part
 // Loop through each athlete and apply changes to the DOM
 const athletes = data.response.data;
 Object.entries(athletes).forEach(([key, athlete]) => {
