@@ -69,8 +69,6 @@ const data = {
 
 const createHtml = (athlete) => {
   //Sandile's Section
-  firstName, surname, id, races = athlete
-  [date], [time] = races.reverse()
 
   const fragment = document.createDocumentFragment();
   const title = document.createElement('h2');
