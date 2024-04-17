@@ -112,6 +112,6 @@ const createHtml = (athlete) => {
 
 //Qonda's Section
 
-[NM372], [SV782] = data
-document.querySelector(NM372).appendChild(createHtml(NM372));
-document.querySelector(SV782).appendChild(createHtml(SV782));
+const [NM372, SV782]=  Object.values(data.response.data);
+document.querySelector('NM372').appendChild(createHtml(NM372));
+document.querySelector('SV782').appendChild(createHtml(SV782));
